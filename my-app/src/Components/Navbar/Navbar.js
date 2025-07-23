@@ -12,8 +12,8 @@ function Navbar() {
   const links = [
     { path: '/', name: 'Home' },
     { path: '/courses', name: 'Courses' },
-    { path: '/webinars', name: 'Events' },
-    { path: '/digitalproducts', name: 'Clubs' },
+    { path: '/events', name: 'Events' },
+    { path: '/clubs', name: 'Clubs' },
   ]
 
   const [clicked,setClicked] = useState(false);
