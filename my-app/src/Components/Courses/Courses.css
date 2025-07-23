@@ -1,0 +1,40 @@
+.core-course-container {
+  margin-bottom: 200px;
+  margin-top: 150px;
+}
+.course-discount {
+  text-decoration:line-through;
+  color: red;
+  font-size: 18px;
+}
+.course-cost {
+  font-size: 18px;
+  color: rgb(255, 68, 0);
+}
+.cost-container {
+  display: flex;
+}
+
+.buy-button {
+  background-color: orange;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  border: none;
+  padding: 10px 35px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.discount-img {
+  width: 30px;
+  border-radius: 15px;
+  background-color: transparent;
+  margin-right: 3px;
+}
+.discount-paragraph {
+  background-color: aliceblue;
+  margin-top: 15px;
+  font-size: 14px;
+  font-family: arial;
+  color: rgb(162, 160, 160);
+}

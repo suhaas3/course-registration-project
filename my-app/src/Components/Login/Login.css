@@ -1,0 +1,39 @@
+.login {
+    background-color: aliceblue;
+    height: 100%;
+}
+.login-main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-section {
+ display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+.username-input,
+.password-input {
+    height: 30px;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.login-button {
+ background-color: orange;
+  color: white;
+  border: none;
+  padding: 5px 107px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.login-button:focus {
+  outline: none;
+}
+
