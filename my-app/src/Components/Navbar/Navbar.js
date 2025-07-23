@@ -50,7 +50,6 @@ function Navbar() {
   return (
     <>
       <div className="navbar-section">
-
         <ul type='none' className='nav-lists'>
           {links.map((item, index) => (
             <li className={`lists ${location.pathname === item.path ? 'active-link' : ""}`} key={index} onClick={() => navigateFun(item.path)}>{item.name}

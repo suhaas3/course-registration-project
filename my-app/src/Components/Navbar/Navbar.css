@@ -6,6 +6,11 @@
   color: rgb(220, 42, 6);
   padding-top: 25px;
   padding-bottom: 25px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 200;
 }
 .nav-lists {
   display: flex;

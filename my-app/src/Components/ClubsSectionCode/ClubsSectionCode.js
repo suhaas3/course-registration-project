@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import './ClubsSectionCode.css';
 
 function ClubsSectionCode() {
+
+  const [openSideBar, setOpenSideBar] = useState(false);
+  const [openBranchClubs, setOpenBranchClubs] = useState(false);
+  const [cClub,setCclub] = useState('');
 
   const clubsObj = [
     {
@@ -111,22 +115,101 @@ function ClubsSectionCode() {
     },
   ]
 
+  const branchCseDsClubs = [
+    { name: "hydra", id: 1 },
+    { name: "sheild", id: 2 },
+    { name: "arts", id: 3 },
+    { name: "codes", id: 4 }
+  ]
+
+  const branchCseClubs = [
+    { name: "hydra", id: 1 },
+    { name: "sheild", id: 2 },
+    { name: "arts", id: 3 },
+    { name: "codes", id: 4 }
+  ]
+
+  const branchEceClubs = [
+    { name: "hydra", id: 1 },
+    { name: "sheild", id: 2 },
+    { name: "arts", id: 3 },
+    { name: "codes", id: 4 }
+  ]
+
+  function openClubsBar() {
+    setOpenSideBar(prev => !prev);
+  }
+
+  function handleBranchClubs() {
+    setOpenBranchClubs(prev => !prev);
+  }
+
+  function handleClub(event) {
+    const innerHtml = event.currentTarget.innerHTML;
+    setCclub(innerHtml);
+  }
+
+
   return (
     <>
+
+      <button className="arrow-open-button" onClick={openClubsBar}>&gt;&gt;</button>
+
+      {openSideBar && <div className="side-bar-container">
+
+        <div className="cse-ds-clubs">
+          <p className="branch-name-cseds" onClick={handleBranchClubs}>CSE-DS</p>
+          {openBranchClubs && <ul type="none" className="ul-cse-ds">
+            {branchCseDsClubs?.map(copyOfBranchCseDsClubs => {
+              return (
+                <li onClick={handleClub} data-club-id={copyOfBranchCseDsClubs.id} className="clubs-lists">{copyOfBranchCseDsClubs.name}</li>
+              )
+            })}
+          </ul>}
+
+        </div>
+
+        <div className="cse-clubs">
+          <p className="branch-name-cseds" onClick={handleBranchClubs}>CSE</p>
+          {openBranchClubs && <ul type="none" className="ul-cse">
+            {branchCseClubs?.map(copyOfBranchCseClubs => {
+              return (
+                <li onClick={handleClub} className="clubs-lists" data-club-id={copyOfBranchCseClubs.id}>{copyOfBranchCseClubs.name}</li>
+              )
+            })}
+          </ul>}
+        </div>
+
+        <div className="ece-clubs">
+          <p className="branch-name-ece" onClick={handleBranchClubs}>ECE</p>
+          {openBranchClubs && <ul type="none" className="ul-ece">
+            {branchEceClubs?.map(copyOfBranchEceClubs => {
+              return (
+                <li onClick={handleClub} className="clubs-lists" data-club-id={copyOfBranchEceClubs.id}>{copyOfBranchEceClubs.name}</li>
+              )
+            })}
+          </ul>}
+        </div>
+
+      </div>}
+
+
+
+
       <div className="container-fluid card-clubs-container">
         <div className="row row-card-container">
           {clubsObj?.map((copyOfClubsObj => {
             return (
               <div className="col-3">
-              <div class="card" style={{width: "18rem;"}}>
-                <img src={copyOfClubsObj.image} class="card-img-top" alt="..." />
-                <div class="card-body">
-                  <h5 class="card-title">{copyOfClubsObj.branch}</h5>
-                  <p class="card-text">{copyOfClubsObj.clubName}</p>
-                  <p class="card-para">&#8377;{copyOfClubsObj.registrationFee}</p>
-                  <button type="button" class="btn btn-secondary">start ur saturday</button>
+                <div class="card" style={{ width: "18rem;" }}>
+                  <img src={copyOfClubsObj.image} class="card-img-top" alt="..." />
+                  <div class="card-body">
+                    <h5 class="card-title">{copyOfClubsObj.branch}</h5>
+                    <p class="card-text">{copyOfClubsObj.clubName}</p>
+                    <p class="card-para">&#8377;{copyOfClubsObj.registrationFee}</p>
+                    <button type="button" class="btn btn-secondary">start ur saturday</button>
+                  </div>
                 </div>
-              </div>
               </div>
             )
           }))}
