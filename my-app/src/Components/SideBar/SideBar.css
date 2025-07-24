@@ -4,14 +4,22 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.sidebar-button {
+.sidebar-open-button {
   position: fixed;
   top: 74px;
   left: 0;
   z-index: 400;
   border: none;
 }
-.sidebar-button:focus {
+.sidebar-close-button {
+  position: fixed;
+  top: 74px;
+  left: 150px;
+  z-index: 400;
+  border: none;
+}
+.sidebar-open-button:focus ,
+.sidebar-close-button:focus{
   outline: none;
 }
 .sidebar-container {
