@@ -1,10 +1,9 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './SideBar.css';
 
 function SideBar() {
   const [mainSidebar, setMainSidebar] = useState(false);
-  const [sidebarTitle, setSidebarTitle] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,67 +28,47 @@ function SideBar() {
     setMainSidebar(prev => !prev)
   }
 
-  function handleSidebarTitle() {
-    setSidebarTitle(prev => !prev);
-  }
-
 
   return (
     <>
+      <div className='sidebar-main-container'>
 
-      <button onClick={handleSideBar} className='sidebar-button'>&gt;&gt;</button>
-
-
-      {mainSidebar && <div className='sidebar-container'>
-
-        <div className='sidebar-courses'>
-          {mainSidebar && <p data-name="Courses" className='courses-bar' onClick={handleSidebarTitle}>Courses</p>}
-          {sidebarTitle && <ul type='none' className='ul-courses'>
-            {coursesObj?.map(copyOfCourse => {
-              return (
-                <li onClick={() => navigate('/courses')} className='li-course'>{copyOfCourse?.course}</li>
-              )
-            })}
-          </ul>}
-
+        <div className='sidebar-button-catiner'>
+          <button onClick={handleSideBar} className='sidebar-button'>&gt;&gt;</button>
         </div>
 
-        <div className='sidebar-webinars'>
-          {mainSidebar && <p data-name="Webinars" className='webinars-bar' onClick={handleSidebarTitle}>Webinars</p>}
-          {sidebarTitle && <ul type='none' className='ul-webinars'>
-            {webinarsObj?.map(copyOfWebinars => {
-              return (
-                <li className='li-webinars' onClick={() => navigate('/webinars')}>{copyOfWebinars?.webinar}</li>
-              )
-            })}
-          </ul>}
+        <div className='sidebar-container'>
+
+          <div className='sidebar-courses'>
+              <img className='course-icon' src='https://cdn-icons-png.flaticon.com/512/4762/4762311.png' alt='...' />
+            {mainSidebar && <p data-name="Courses" className='sidebar-label' onClick={() => navigate('/courses')}>Courses</p>}
+          </div>
+
+          <div className='sidebar-webinars'>
+            <img className='webinar-icon' src="https://cdn-icons-png.flaticon.com/512/2038/2038315.png" alt='...' />
+            {mainSidebar && <p data-name="Webinars" className='sidebar-label' onClick={() => navigate('/webinars')}>Webinars</p>}
+
+          </div>
+
+          <div className='sidebar-clubs'>
+            <img src='https://cdn-icons-png.flaticon.com/512/3990/3990804.png' alt='...' className='clubs-icon' />
+            {mainSidebar && <p data-name="Clubs" className='sidebar-label' onClick={() => navigate('/clubs')}>Clubs</p>}
+          </div>
+
+          <div className='sidebar-cart'>
+            <img src='https://cdn3.vectorstock.com/i/1000x1000/80/67/shopping-cart-icon-in-blue-silhouette-vector-18578067.jpg' alt='...' className='cart-icon' />
+            {mainSidebar && <p className='sidebar-label' onClick={() => navigate('/cart')}>Cart</p>}
+
+          </div>
+
+          <div className='sidebar-mydashboard'>
+            <img src='https://cdn-icons-png.flaticon.com/512/8608/8608769.png' alt='...' className='profile-icon' />
+            {mainSidebar && <p className='sidebar-label' onClick={() => navigate('/userDetails')}>mydashboard</p>}
+
+          </div>
 
         </div>
-
-        <div className='sidebar-clubs'>
-          {mainSidebar && <p data-name="Clubs" className='clubs-bar' onClick={handleSidebarTitle}>Clubs</p>}
-          {sidebarTitle && <ul type='none' className='ul-clubs'>
-            {clubsObj?.map(copyOfClubs => {
-              return (
-                <li onClick={() => navigate('/clubs')} className='li-clubs'>{copyOfClubs?.club}</li>
-              )
-            })}
-          </ul>}
-
-        </div>
-
-        <div className='sidebar-cart'>
-          <p className='cart-bar' onClick={handleSidebarTitle}>Cart</p>
-          {sidebarTitle && <ul type='none'><li className='li-cart' onClick={() => navigate('/cart')}>Cart items</li>
-          </ul>}
-        </div>
-
-        <div className='sidebar-mydashboard'>
-          <p className='mydashboard-bar' onClick={handleSidebarTitle}>mydashboard</p>
-          {sidebarTitle && <ul type='none'><li className='li-dashboard' onClick={() => navigate('/userDetails')}>user details</li>
-          </ul>}
-        </div>
-      </div>}
+      </div>
 
     </>
   )
