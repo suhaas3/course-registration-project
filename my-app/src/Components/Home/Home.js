@@ -5,6 +5,7 @@ import CoursesSectionCode from "../CoursesSectionCode/CoursesSectionCode";
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import SideBar from "../SideBar/SideBar";
 
 function Home() {
 
@@ -91,6 +92,11 @@ function Home() {
 
   return (
     <>
+    <div className="sidebar-home">
+      <SideBar/>
+
+    </div>
+    <div className="home-container">
     <div className="dashBoard-main">
        <div className="dashBoard">
       <h2>welcome!,{userName}</h2>
@@ -243,6 +249,7 @@ function Home() {
     </div>
 
       < FooterSectionCode/>
+      </div>
       </div>
     </>
   )

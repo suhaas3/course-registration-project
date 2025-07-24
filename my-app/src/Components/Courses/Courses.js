@@ -1,6 +1,7 @@
 import React from "react";
 import './Courses.css';
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
+import SideBar from "../SideBar/SideBar";
 function Courses() {
 
   const coursesObject = [{
@@ -26,6 +27,11 @@ function Courses() {
 
   return (
     <>
+        <div className="sidebar-home">
+      <SideBar/>
+
+    </div>
+
       <div className="course-section-container">
         <div className="core-course-container">
           <div className="container">

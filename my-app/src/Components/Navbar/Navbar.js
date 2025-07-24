@@ -12,7 +12,7 @@ function Navbar() {
   const links = [
     { path: '/', name: 'Home' },
     { path: '/courses', name: 'Courses' },
-    { path: '/events', name: 'Events' },
+    { path: '/webinars', name: 'Webinars' },
     { path: '/clubs', name: 'Clubs' },
   ]
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './ClubsSectionCode.css';
+import SideBar from "../SideBar/SideBar";
 
 function ClubsSectionCode() {
 
@@ -153,48 +154,10 @@ function ClubsSectionCode() {
   return (
     <>
 
-      <button className="arrow-open-button" onClick={openClubsBar}>&gt;&gt;</button>
+    <div className="sidebar-home">
+      <SideBar/>
 
-      {openSideBar && <div className="side-bar-container">
-
-        <div className="cse-ds-clubs">
-          <p className="branch-name-cseds" onClick={handleBranchClubs}>CSE-DS</p>
-          {openBranchClubs && <ul type="none" className="ul-cse-ds">
-            {branchCseDsClubs?.map(copyOfBranchCseDsClubs => {
-              return (
-                <li onClick={handleClub} data-club-id={copyOfBranchCseDsClubs.id} className="clubs-lists">{copyOfBranchCseDsClubs.name}</li>
-              )
-            })}
-          </ul>}
-
-        </div>
-
-        <div className="cse-clubs">
-          <p className="branch-name-cseds" onClick={handleBranchClubs}>CSE</p>
-          {openBranchClubs && <ul type="none" className="ul-cse">
-            {branchCseClubs?.map(copyOfBranchCseClubs => {
-              return (
-                <li onClick={handleClub} className="clubs-lists" data-club-id={copyOfBranchCseClubs.id}>{copyOfBranchCseClubs.name}</li>
-              )
-            })}
-          </ul>}
-        </div>
-
-        <div className="ece-clubs">
-          <p className="branch-name-ece" onClick={handleBranchClubs}>ECE</p>
-          {openBranchClubs && <ul type="none" className="ul-ece">
-            {branchEceClubs?.map(copyOfBranchEceClubs => {
-              return (
-                <li onClick={handleClub} className="clubs-lists" data-club-id={copyOfBranchEceClubs.id}>{copyOfBranchEceClubs.name}</li>
-              )
-            })}
-          </ul>}
-        </div>
-
-      </div>}
-
-
-
+    </div>
 
       <div className="container-fluid card-clubs-container">
         <div className="row row-card-container">

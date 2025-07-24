@@ -1,4 +1,8 @@
 
+.home-container {
+  padding-top: 100px;
+  padding-left: 200px;
+}
 .dashBoard {
   display: flex;
   flex-direction: column;
@@ -61,8 +65,8 @@
 .second-container {
   display: flex;
   justify-content: space-between;
-  margin-left: 122px;
-  margin-right: 50px;
+  padding-left:12px;
+  padding-right: 23px;
   gap: 40px;
   margin-bottom: 110px;
   padding-top: 100px;
@@ -82,7 +86,7 @@
 .first-section-paragraph,
 .second-section-paragraph,
 .third-section-paragraph {
-  font-size: 18px;
+  font-size: 16px;
   color: rgb(5, 0, 30);
   line-height: 27px;
   font-weight: 400;
@@ -98,12 +102,11 @@
 .hardik-img {
   width: 550px;
   height: 450px;
-  margin-left: 100px;
   border-radius: 16px;
 }
 .second-right-paragraph,
 .second-right-paragraph2 {
-  font-size: 18px;
+  font-size: 16px;
   color: rgb(5, 0, 30);
   line-height: 27px;
   margin-bottom: 24px;
