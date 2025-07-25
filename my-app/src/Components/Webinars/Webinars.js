@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
 import WebinarSubmitForm from "../WebinarSubmitForm/WebinarSubmitForm";
+import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 
 function Webinars() {
+
+  const [openWebinarForm,setWebinarForm]=useState(false);
+
+function handleWebinarForm() {
+  setWebinarForm(prev => !prev);
+}
+
+console.log(openWebinarForm,'add to button')
 
   return (
 
@@ -14,7 +23,7 @@ function Webinars() {
         <div className="add-webinar-section">
           <h3 className="upload-header">Upload webinar</h3>
 
-          <button className="add-webinar-button">+ Add webinar</button>
+          <button className="add-webinar-button" onClick={handleWebinarForm}>+ Add webinar</button>
 
         </div>
         <div className="search-section-container">
@@ -72,6 +81,8 @@ function Webinars() {
         </div>
 
       </div>
+
+      <CustomeWebinarForm openWebinarForm={openWebinarForm} setWebinarForm={setWebinarForm}/>
 
 
     </>
