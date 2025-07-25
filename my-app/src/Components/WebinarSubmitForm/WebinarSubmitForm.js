@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import './WebinarSubmitForm.css';
+import { createData } from "../../ContextApiData";
 
-
-function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
+ function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
 
   const [formInputDetails, setFormInputDetails] = useState({
     Title: "",
     Date: "",
     Description: ""
-  })
+  });
+
 
   const closeWebinarForm = () => {
     setWebinarForm(false);
@@ -22,11 +23,9 @@ function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
     })
   }
 
-  const saveDataToLocal = () => {
-
-    localStorage.setItem('webinarData', JSON.stringify(formInputDetails));
-    alert('Data saved to localStorage!');
-    
+  const saveData = () => {
+    localStorage.setItem('webinarsData',formInputDetails)
+    alert('Datasaved successfully!');
   }
 
   return (
@@ -47,7 +46,7 @@ function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
 
           <div className="form-buttons">
 
-            <button className="form-save-button" onClick={saveDataToLocal}>Save</button>
+            <button className="form-save-button" onClick={saveData}>Save</button>
 
             <button className="form-close-button" onClick={closeWebinarForm}>Close</button>
 
@@ -60,4 +59,4 @@ function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
   )
 }
 
-export default WebinarSubmitForm;
+ export default WebinarSubmitForm;

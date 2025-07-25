@@ -1,26 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
-import WebinarSubmitForm from "../WebinarSubmitForm/WebinarSubmitForm";
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 
 function Webinars() {
 
   const [openWebinarForm, setWebinarForm] = useState(false);
 
-  const [saveWebinarData,setSaveWebinarData]=useState([]);
-
   function handleWebinarForm() {
     setWebinarForm(prev => !prev);
   }
 
-  useEffect(() => {
-      const savedData = JSON.parse(localStorage.getItem("webinarData")) || [];
-      setSaveWebinarData(savedData); 
-  }, []);
+  const getData = localStorage.getItem('webinarsData');
 
-  console.log(saveWebinarData,'loaclstorage webinar data')
-
+  console.log(getData.Date,'local storage data')
 
   return (
 
@@ -43,7 +36,7 @@ function Webinars() {
         <div className="webinar-card-container">
           <div className="container-fluid">
             <div className="row">
-              {/* {saveWebinarData.map((webinar, index) => (
+              {/* {reciveData.map((webinar, index) => (
                 <div className="col-4" key={index}>
                   <div className="card" style={{ width: "18rem" }}>
                     <div className="card-body">

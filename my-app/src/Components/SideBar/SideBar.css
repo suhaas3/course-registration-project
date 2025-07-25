@@ -39,7 +39,8 @@
 .clubs-icon,
 .cart-icon,
 .profile-icon {
-  width: 30px;
+  width: 25px;
+  border-radius: 10px;
 }
 .sidebar-courses,
 .sidebar-webinars,
