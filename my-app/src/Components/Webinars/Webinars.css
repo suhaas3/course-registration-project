@@ -1,0 +1,56 @@
+.webinar-container {
+  padding-top: 250px;
+  padding-left: 250px;
+}
+
+.add-webinar-section {
+  width: 1200px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 226px;
+  margin-bottom: 50px;
+}
+
+.upload-header {
+  font-family: Arial;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.add-webinar-button {
+  background-color: blue;
+  border: none;
+  color: white;
+  padding: 4px 20px;
+  font-size: 16px;
+  font-family: arial;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.webinar-search-input {
+  width: 800px;
+  height: 36px;
+}
+
+.webinar-search-input::placeholder {
+  font-size: 16px;
+  padding-left: 10px;
+  font-family: arial;
+}
+
+.search-webinar-button {
+  background-color: rgb(150, 148, 148);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: 50px;
+  padding: 6px 25px;
+  border-radius: 6px;
+}
+
+.search-webinar-button:focus {
+  outline: none;
+}

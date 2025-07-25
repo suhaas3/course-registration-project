@@ -1,5 +1,6 @@
 import React from "react";
 import SideBar from "../SideBar/SideBar";
+import WebinarSubmitForm from "../WebinarSubmitForm/WebinarSubmitForm";
 
 function Cart() {
 
@@ -10,7 +11,10 @@ function Cart() {
         <SideBar />
 
       </div>
-      <h1>Cart section has no products</h1>
+
+      <WebinarSubmitForm/>
+
+
     </>
   )
 }

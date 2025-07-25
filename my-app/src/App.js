@@ -8,6 +8,7 @@ import Webinars from "./Components/Webinars/Webinars";
 // import LoginSection from "./Components/LoginSection/LoginSection";
 import Cart from "./Components/Cart/Cart";
 import ClubsSection from "./Components/ClubsSectionCode/ClubsSectionCode";
+import WebinarSubmitForm from "./Components/WebinarSubmitForm/WebinarSubmitForm";
 
 function App() {
   return (
