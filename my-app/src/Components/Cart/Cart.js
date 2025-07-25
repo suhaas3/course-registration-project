@@ -12,7 +12,6 @@ function Cart() {
 
       </div>
 
-      <WebinarSubmitForm/>
 
 
     </>

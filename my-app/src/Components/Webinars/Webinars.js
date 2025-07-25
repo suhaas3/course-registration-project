@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
 import WebinarSubmitForm from "../WebinarSubmitForm/WebinarSubmitForm";
@@ -6,13 +6,21 @@ import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 
 function Webinars() {
 
-  const [openWebinarForm,setWebinarForm]=useState(false);
+  const [openWebinarForm, setWebinarForm] = useState(false);
 
-function handleWebinarForm() {
-  setWebinarForm(prev => !prev);
-}
+  const [saveWebinarData,setSaveWebinarData]=useState([]);
 
-console.log(openWebinarForm,'add to button')
+  function handleWebinarForm() {
+    setWebinarForm(prev => !prev);
+  }
+
+  useEffect(() => {
+      const savedData = JSON.parse(localStorage.getItem("webinarData")) || [];
+      setSaveWebinarData(savedData); 
+  }, []);
+
+  console.log(saveWebinarData,'loaclstorage webinar data')
+
 
   return (
 
@@ -35,44 +43,17 @@ console.log(openWebinarForm,'add to button')
         <div className="webinar-card-container">
           <div className="container-fluid">
             <div className="row">
-
-              <div className="col-4">
-
-                <div class="card" style={{ width: "18rem" }}>
-                  <img src="..." class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+              {/* {saveWebinarData.map((webinar, index) => (
+                <div className="col-4" key={index}>
+                  <div className="card" style={{ width: "18rem" }}>
+                    <div className="card-body">
+                      <h5 className="card-title">{webinar.Title}</h5>
+                      <h5 className="card-date">{webinar.Date}</h5>
+                      <p className="card-text">{webinar.Description}</p>
+                    </div>
                   </div>
                 </div>
-
-              </div>
-
-              <div className="col-4">
-
-                <div class="card" style={{ width: "18rem" }}>
-                  <img src="..." class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-                </div>
-
-              </div>
-              <div className="col-4">
-                <div class="card" style={{ width: "18rem" }}>
-                  <img src="..." class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                  </div>
-
-
-                </div>
-              </div>
+              ))} */}
 
             </div>
 
@@ -82,7 +63,7 @@ console.log(openWebinarForm,'add to button')
 
       </div>
 
-      <CustomeWebinarForm openWebinarForm={openWebinarForm} setWebinarForm={setWebinarForm}/>
+      <CustomeWebinarForm openWebinarForm={openWebinarForm} setWebinarForm={setWebinarForm} />
 
 
     </>

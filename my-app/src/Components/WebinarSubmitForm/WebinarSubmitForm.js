@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import './WebinarSubmitForm.css';
 
 
-function WebinarSubmitForm({openWebinarForm, setWebinarForm}) {
+function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
 
-  function closeWebinarForm() {
+  const [formInputDetails, setFormInputDetails] = useState({
+    Title: "",
+    Date: "",
+    Description: ""
+  })
+
+  const closeWebinarForm = () => {
     setWebinarForm(false);
+  }
+
+  const handelFormInput = (event) => {
+    const {name,value} = event.target;
+    setFormInputDetails({
+      ...formInputDetails,
+      [name]: value
+    })
+  }
+
+  const saveDataToLocal = () => {
+
+    localStorage.setItem('webinarData', JSON.stringify(formInputDetails));
+    alert('Data saved to localStorage!');
+    
   }
 
   return (
@@ -16,17 +37,17 @@ function WebinarSubmitForm({openWebinarForm, setWebinarForm}) {
 
 
           <p className="title-para">Title :</p>
-          <input className="title-input" placeholder="title..." />
+          <input className="title-input" onChange={handelFormInput} name="Title" placeholder="title..." />
 
           <p className="date-para">Date :</p>
-          <input type="date" className="date-input" placeholder="dd-mm-yyyy" />
+          <input type="date" name="Date" onChange={handelFormInput} className="date-input" placeholder="dd-mm-yyyy" />
 
           <p className="description-para">Description :</p>
-          <textarea placeholder="Description..." className="description-input" />
+          <textarea name="Description" onChange={handelFormInput} placeholder="Description..." className="description-input" />
 
           <div className="form-buttons">
 
-            <button className="form-save-button">Save</button>
+            <button className="form-save-button" onClick={saveDataToLocal}>Save</button>
 
             <button className="form-close-button" onClick={closeWebinarForm}>Close</button>
 

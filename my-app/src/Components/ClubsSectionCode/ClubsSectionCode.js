@@ -116,40 +116,6 @@ function ClubsSectionCode() {
     },
   ]
 
-  const branchCseDsClubs = [
-    { name: "hydra", id: 1 },
-    { name: "sheild", id: 2 },
-    { name: "arts", id: 3 },
-    { name: "codes", id: 4 }
-  ]
-
-  const branchCseClubs = [
-    { name: "hydra", id: 1 },
-    { name: "sheild", id: 2 },
-    { name: "arts", id: 3 },
-    { name: "codes", id: 4 }
-  ]
-
-  const branchEceClubs = [
-    { name: "hydra", id: 1 },
-    { name: "sheild", id: 2 },
-    { name: "arts", id: 3 },
-    { name: "codes", id: 4 }
-  ]
-
-  function openClubsBar() {
-    setOpenSideBar(prev => !prev);
-  }
-
-  function handleBranchClubs() {
-    setOpenBranchClubs(prev => !prev);
-  }
-
-  function handleClub(event) {
-    const innerHtml = event.currentTarget.innerHTML;
-    setCclub(innerHtml);
-  }
-
 
   return (
     <>
