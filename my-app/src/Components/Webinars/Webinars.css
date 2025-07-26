@@ -54,3 +54,21 @@
 .search-webinar-button:focus {
   outline: none;
 }
+
+.webinar-card-container {
+  margin-top: 150px;
+}
+
+.webinar-card-box {
+  margin-bottom: 30px;
+}
+
+.webinar-start-buttom {
+  background-color: black;
+  color: white;
+  border: none;
+  font-family: arial;
+  font-size: 16px;
+  padding: 4px 20px;
+  border-radius: 6px;
+}

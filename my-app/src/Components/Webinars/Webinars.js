@@ -1,19 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
+import { createData } from "../../ContextApiData";
 
 function Webinars() {
 
   const [openWebinarForm, setWebinarForm] = useState(false);
+  const [savedWebinarData,setSavedWebinarData]=useState([]);
 
   function handleWebinarForm() {
     setWebinarForm(prev => !prev);
   }
 
-  const getData = localStorage.getItem('webinarsData');
 
-  console.log(getData.Date,'local storage data')
+const receiveContext = useContext(createData);
+
+useEffect(() => {
+  const storedWebinarData = JSON.parse(localStorage.getItem('webinarsData'));
+  setSavedWebinarData(storedWebinarData);
+},[receiveContext])
+
+console.log(receiveContext,'recieved data')
+
+
+ 
+
 
   return (
 
@@ -27,6 +39,7 @@ function Webinars() {
           <button className="add-webinar-button" onClick={handleWebinarForm}>+ Add webinar</button>
 
         </div>
+
         <div className="search-section-container">
           <input className="webinar-search-input" placeholder="Seach webinar..." />
 
@@ -36,17 +49,18 @@ function Webinars() {
         <div className="webinar-card-container">
           <div className="container-fluid">
             <div className="row">
-              {/* {reciveData.map((webinar, index) => (
-                <div className="col-4" key={index}>
-                  <div className="card" style={{ width: "18rem" }}>
+              {savedWebinarData?.map((webinar, index) => (
+                <div className="col-4">
+                  <div className="card webinar-card-box" style={{ width: "18rem" }}>
                     <div className="card-body">
                       <h5 className="card-title">{webinar.Title}</h5>
                       <h5 className="card-date">{webinar.Date}</h5>
                       <p className="card-text">{webinar.Description}</p>
+                      <button className="webinar-start-buttom">Start now</button>
                     </div>
                   </div>
-                </div>
-              ))} */}
+                  </div>
+              ))}
 
             </div>
 

@@ -1,6 +1,7 @@
 import React, {  useState } from "react";
 import './WebinarSubmitForm.css';
 import { createData } from "../../ContextApiData";
+import Webinars from "../Webinars/Webinars";
 
  function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
 
@@ -9,6 +10,8 @@ import { createData } from "../../ContextApiData";
     Date: "",
     Description: ""
   });
+
+  const [refreshWebinarPage,setRefreshWebinarPage]= useState(false);
 
 
   const closeWebinarForm = () => {
@@ -24,12 +27,19 @@ import { createData } from "../../ContextApiData";
   }
 
   const saveData = () => {
-    localStorage.setItem('webinarsData',formInputDetails)
-    alert('Datasaved successfully!');
+    const existingData = JSON.parse(localStorage.getItem('webinarsData')) || [];
+
+    const updatedData = [...existingData,formInputDetails];
+
+    localStorage.setItem('webinarsData',JSON.stringify(updatedData));
+
+    setRefreshWebinarPage(prev => !prev);
+    alert('UR Webinar saved Successfully!');
   }
 
   return (
     <>
+    <createData.Provider value={refreshWebinarPage}>
       <div className="webinar-form-container">
 
         <div className="webinar-form">
@@ -55,6 +65,8 @@ import { createData } from "../../ContextApiData";
         </div>
 
       </div>
+      <Webinars/>
+      </createData.Provider>
     </>
   )
 }
