@@ -16,6 +16,7 @@ import Webinars from "../Webinars/Webinars";
 
   const closeWebinarForm = () => {
     setWebinarForm(false);
+    setRefreshWebinarPage(true);
   }
 
   const handelFormInput = (event) => {
@@ -39,7 +40,6 @@ import Webinars from "../Webinars/Webinars";
 
   return (
     <>
-    <createData.Provider value={refreshWebinarPage}>
       <div className="webinar-form-container">
 
         <div className="webinar-form">
@@ -61,12 +61,8 @@ import Webinars from "../Webinars/Webinars";
             <button className="form-close-button" onClick={closeWebinarForm}>Close</button>
 
           </div>
-
         </div>
-
       </div>
-      <Webinars/>
-      </createData.Provider>
     </>
   )
 }

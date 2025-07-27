@@ -4,7 +4,7 @@ import './Webinars.css';
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 import { createData } from "../../ContextApiData";
 
-function Webinars() {
+function Webinars({}) {
 
   const [openWebinarForm, setWebinarForm] = useState(false);
   const [savedWebinarData,setSavedWebinarData]=useState([]);
@@ -14,18 +14,11 @@ function Webinars() {
   }
 
 
-const receiveContext = useContext(createData);
 
 useEffect(() => {
   const storedWebinarData = JSON.parse(localStorage.getItem('webinarsData'));
   setSavedWebinarData(storedWebinarData);
-},[receiveContext])
-
-console.log(receiveContext,'recieved data')
-
-
- 
-
+},[])
 
   return (
 
@@ -71,7 +64,6 @@ console.log(receiveContext,'recieved data')
       </div>
 
       <CustomeWebinarForm openWebinarForm={openWebinarForm} setWebinarForm={setWebinarForm} />
-
 
     </>
   )
