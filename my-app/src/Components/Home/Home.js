@@ -5,7 +5,7 @@ import CoursesSectionCode from "../CoursesSectionCode/CoursesSectionCode";
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import SideBar from "../SideBar/SideBar";
+// import SideBar from "../SideBar/SideBar";
 
 function Home() {
 
@@ -85,15 +85,11 @@ function Home() {
         navigate('/courses')
       }
 
-      // const globalData = useSelector((globalStateStorePlace) => globalStateStorePlace);
-
-      // console.log(globalData.SignUpForm.userName,"global dataaaaaaaaa")
-
 
   return (
     <>
     <div className="sidebar-home">
-      <SideBar/>
+      {/* <SideBar/> */}
 
     </div>
     <div className="home-container">
@@ -187,31 +183,6 @@ function Home() {
            <CoursesSectionCode />
 
         </div>
-
-       
-
-
-        {/* <div className="real-results-container">
-          <h3 className="real-result-heading">Real Results from Real People</h3>
-          <div className="container">
-            <div className="row row-res-container">
-              {resultObject.map((resObj, index) => {
-                return (
-                  <div class="card result-card-container" style={{ width: '380px' }}>
-                    <div className="real-img-container">
-                       <img src={resObj.image} class="card-img-top res-img" alt="img" />
-                    </div>
-                    <div class="card-body">
-                      <h5 class="card-title res-title">{resObj.title}</h5>
-                      <p class="card-text res-paragraph">{resObj.description}</p>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-          <button className="reslut-course-button">View All Courses</button>
-        </div> */}
 
         <div className="real-results-container">
       <h3 className="real-result-heading">Real Results from Real People</h3>
