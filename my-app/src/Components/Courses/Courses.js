@@ -23,14 +23,15 @@ function Courses() {
     description: "Prepare for a Back-End career with a real-world office simulation experience! Added a preview for our class on how i will be teaching check below",
     MarketPrice: 100000,
     originalPrice: 20000
-  }]
+  },
+]
 
   return (
     <>
-        <div className="sidebar-home">
-      <SideBar/>
+      <div className="sidebar-home">
+        <SideBar/>
 
-    </div>
+      </div>
 
       <div className="course-section-container">
         <div className="core-course-container">
@@ -50,7 +51,7 @@ function Courses() {
                         <p className="course-cost">₹{course.originalPrice}</p>
                       </div>
                       <button className="buy-button">Buy Now</button>
-                      <p className="discount-paragraph"><img src="https://static.vecteezy.com/system/resources/thumbnails/008/963/155/small/sales-discount-price-logo-free-vector.jpg" className="discount-img"/>Flexible pricing plans
+                      <p className="discount-paragraph"><img src="https://static.vecteezy.com/system/resources/thumbnails/008/963/155/small/sales-discount-price-logo-free-vector.jpg" className="discount-img" />Flexible pricing plans
                       </p>
                     </div>
                   </div>

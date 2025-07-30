@@ -4,10 +4,10 @@ import './FooterSectionCode.css';
 function FooterSectionCode() {
 
   const footerObj = [{
-    image: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj25zYqL4_MbUGibcRX7WIwwjdjbpmkXvRowmwp8vU5skTbv-94lDUdKTot8JngKPebwuffxdclhJpSfOSQtMwPwOuS8SGdCKtDJcT6qNM4mKo-8E2fMn7CLe5ye-THgRYAFhOWZtKeGkQ/s0-rw/Instagram+Logo+-+Download+Free+Vector+PNG.png"
+    image: "https://static.vecteezy.com/system/resources/previews/042/148/632/non_2x/instagram-logo-instagram-social-media-icon-free-png.png"
   },
   {
-    image: "https://thumbs.dreamstime.com/b/isolated-linkedin-logo-vector-illustration-icon-minsk-belarus-march-142909970.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png"
   },
   {
     image: "https://static.vecteezy.com/system/resources/thumbnails/018/930/575/small_2x/youtube-logo-youtube-icon-transparent-free-png.png"

@@ -16,7 +16,8 @@ function CoursesSectionCode() {
     image: "https://media.geeksforgeeks.org/wp-content/uploads/20240701150157/Backend-Development.webp",
     title: "Back-End Development",
     description: "Prepare for a Back-End career with a real-world office simulation experience! Added a preview for our class on how i will be teaching check below"
-  }]
+  },
+]
 
   return (
     <>
