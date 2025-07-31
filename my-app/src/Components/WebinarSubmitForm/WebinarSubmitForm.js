@@ -1,9 +1,9 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import './WebinarSubmitForm.css';
 import { createData } from "../../ContextApiData";
 import Webinars from "../Webinars/Webinars";
 
- function WebinarSubmitForm({ openWebinarForm, setWebinarForm }) {
+function WebinarSubmitForm({ setRefreshFlag, setWebinarForm, openWebinarForm }) {
 
   const [formInputDetails, setFormInputDetails] = useState({
     Title: "",
@@ -11,7 +11,7 @@ import Webinars from "../Webinars/Webinars";
     Description: ""
   });
 
-  const [refreshWebinarPage,setRefreshWebinarPage]= useState(false);
+  const [refreshWebinarPage, setRefreshWebinarPage] = useState(false);
 
 
   const closeWebinarForm = () => {
@@ -20,23 +20,28 @@ import Webinars from "../Webinars/Webinars";
   }
 
   const handelFormInput = (event) => {
-    const {name,value} = event.target;
+    const { name, value } = event.target;
     setFormInputDetails({
       ...formInputDetails,
       [name]: value
     })
   }
 
+
+
   const saveData = () => {
     const existingData = JSON.parse(localStorage.getItem('webinarsData')) || [];
+    const updatedData = [...existingData, formInputDetails];
+    localStorage.setItem('webinarsData', JSON.stringify(updatedData));
 
-    const updatedData = [...existingData,formInputDetails];
+    alert('Your Webinar saved successfully!');
+    setFormInputDetails({ Title: "", Date: "", Description: "" });
 
-    localStorage.setItem('webinarsData',JSON.stringify(updatedData));
+    // Close form and trigger re-render
+    setWebinarForm(false);
+    setRefreshFlag(prev => !prev); // 🔁 This causes Webinars to fetch data again
+  };
 
-    setRefreshWebinarPage(prev => !prev);
-    alert('UR Webinar saved Successfully!');
-  }
 
   return (
     <>
@@ -63,8 +68,9 @@ import Webinars from "../Webinars/Webinars";
           </div>
         </div>
       </div>
+
     </>
   )
 }
 
- export default WebinarSubmitForm;
+export default WebinarSubmitForm;

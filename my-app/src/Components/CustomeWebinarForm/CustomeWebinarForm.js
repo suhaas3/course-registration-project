@@ -2,7 +2,7 @@ import * as React from 'react';
 import Dialog from '@mui/material/Dialog';
 import WebinarSubmitForm from '../WebinarSubmitForm/WebinarSubmitForm';
 
-export default function CustomeWebinarForm({openWebinarForm,setWebinarForm}) {
+export default function CustomeWebinarForm({ setRefreshFlag, setWebinarForm, openWebinarForm }) {
   const [open, setOpen] = React.useState(openWebinarForm);
 
 
@@ -18,7 +18,12 @@ export default function CustomeWebinarForm({openWebinarForm,setWebinarForm}) {
 
       <Dialog open={openWebinarForm} onClose={handleClose}>
 
-        <WebinarSubmitForm openWebinarForm={openWebinarForm} setWebinarForm={setWebinarForm}/>
+        <WebinarSubmitForm
+          openWebinarForm={openWebinarForm}
+          setWebinarForm={setWebinarForm}
+          setRefreshFlag={setRefreshFlag}
+        />
+
       </Dialog>
     </React.Fragment>
   );

@@ -4,22 +4,21 @@ import './Webinars.css';
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 import { createData } from "../../ContextApiData";
 
-function Webinars({}) {
+function Webinars({ }) {
 
   const [openWebinarForm, setWebinarForm] = useState(false);
-  const [savedWebinarData,setSavedWebinarData]=useState([]);
+  const [savedWebinarData, setSavedWebinarData] = useState([]);
+  const [refreshFlag, setRefreshFlag] = useState(false);
+
 
   function handleWebinarForm() {
     setWebinarForm(prev => !prev);
   }
 
-
-
-useEffect(() => {
-  const storedWebinarData = JSON.parse(localStorage.getItem('webinarsData'));
-  setSavedWebinarData(storedWebinarData);
-},[])
-
+  useEffect(() => {
+    const storedWebinarData = JSON.parse(localStorage.getItem('webinarsData')) || [];
+    setSavedWebinarData(storedWebinarData);
+  }, [refreshFlag]); 
   return (
 
     <>
@@ -52,7 +51,7 @@ useEffect(() => {
                       <button className="webinar-start-buttom">Start now</button>
                     </div>
                   </div>
-                  </div>
+                </div>
               ))}
 
             </div>
@@ -63,7 +62,11 @@ useEffect(() => {
 
       </div>
 
-      <CustomeWebinarForm openWebinarForm={openWebinarForm} setWebinarForm={setWebinarForm} />
+      <CustomeWebinarForm
+        openWebinarForm={openWebinarForm}
+        setWebinarForm={setWebinarForm}
+        setRefreshFlag={setRefreshFlag}
+      />
 
     </>
   )
