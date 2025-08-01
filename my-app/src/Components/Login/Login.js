@@ -66,6 +66,7 @@ function Login({openLogin,setOpenLogin}) {
   // }
 
   const [loginDetails, setLoginDetails] = useState({
+    id: Math.floor(Math.random() * 100),
     userName: "",
     passWord: ""
   })
@@ -86,7 +87,7 @@ function Login({openLogin,setOpenLogin}) {
   }
 
   function handleSubmit() {
-    dispatch(AuthLogin({ userName: loginDetails.userName, passWord: loginDetails.passWord }));
+    dispatch(AuthLogin({ id: loginDetails.id,userName: loginDetails.userName, passWord: loginDetails.passWord }));
     if (!loginDetails.userName || !loginDetails.passWord) {
       alert("Enter both UserName and PassWord!")
     } else {
