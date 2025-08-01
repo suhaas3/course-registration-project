@@ -10,6 +10,7 @@ function Webinars({ }) {
   const [openWebinarForm, setWebinarForm] = useState(false);
   const [savedWebinarData, setSavedWebinarData] = useState([]);
   const [refreshFlag, setRefreshFlag] = useState(false);
+  const [editWebinarId, setEditWebinarId] = useState(null);
 
 
   function handleWebinarForm() {
@@ -21,27 +22,33 @@ function Webinars({ }) {
     setSavedWebinarData(storedWebinarData);
   }, [refreshFlag]);
 
-  
+
 
   function removeWebinarTodo(removeId) {
-  console.log(removeId, 'remove data');
+    console.log(removeId, 'remove data');
 
-  // Get existing data from localStorage
-  const storedData = localStorage.getItem('webinarsData');
-  const parsedData = JSON.parse(storedData) || [];
+    // Get existing data from localStorage
+    const storedData = localStorage.getItem('webinarsData');
+    const parsedData = JSON.parse(storedData) || [];
 
-  // Filter out the item to remove
-  const updatedData = parsedData.filter(item => item.Id !== removeId);
+    // Filter out the item to remove
+    const updatedData = parsedData.filter(item => item.Id !== removeId);
 
-  // Save the updated list back to localStorage
-  localStorage.setItem('webinarsData', JSON.stringify(updatedData));
+    // Save the updated list back to localStorage
+    localStorage.setItem('webinarsData', JSON.stringify(updatedData));
 
-  // (Optional) If you stored individual webinar data by ID, remove it
-  localStorage.removeItem(removeId);
+    // (Optional) If you stored individual webinar data by ID, remove it
+    localStorage.removeItem(removeId);
 
-  // Update the state to re-render the UI
-  setSavedWebinarData(updatedData);
-}
+    // Update the state to re-render the UI
+    setSavedWebinarData(updatedData);
+  }
+
+  function editWebinarForm(editId) {
+    setEditWebinarId(editId);           // Set the ID to be edited
+    setWebinarForm(prev => !prev);               // Open the form
+  }
+
   return (
 
     <>
@@ -75,6 +82,9 @@ function Webinars({ }) {
                       <div className="close-symbol" onClick={() => removeWebinarTodo(webinar.Id)}>
                         X
                       </div>
+                      <div className="edit-option" onClick={() => editWebinarForm(webinar.Id)}>
+                        edit
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -92,9 +102,11 @@ function Webinars({ }) {
         openWebinarForm={openWebinarForm}
         setWebinarForm={setWebinarForm}
         setRefreshFlag={setRefreshFlag}
+        editWebinarId={editWebinarId}              // Pass the ID
+        setEditWebinarId={setEditWebinarId}
       />
 
-      <FooterSectionCode/>
+      <FooterSectionCode />
 
     </>
   )

@@ -1,15 +1,18 @@
 .webinar-card-container {
   margin-top: 150px;
 }
+
 .webinar-card-top {
   position: relative;
 }
+
 .close-symbol {
   position: absolute;
   right: 15px;
   top: 8px;
   cursor: pointer;
 }
+
 .webinar-container {
   padding-top: 250px;
   padding-left: 250px;
@@ -41,6 +44,15 @@
   font-family: arial;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.add-webinar-button:focus {
+  outline: none;
+}
+
+.add-webinar-button:hover {
+  background-color: rgb(9, 9, 180);
+  transition: background-color 0.3 ease-in-out;
 }
 
 .webinar-search-input {
@@ -80,4 +92,17 @@
   font-size: 16px;
   padding: 4px 20px;
   border-radius: 6px;
+}
+
+.edit-option {
+  position: absolute;
+  bottom: 20px;
+  right: 5px;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.edit-option:hover {
+  color: red;
 }
