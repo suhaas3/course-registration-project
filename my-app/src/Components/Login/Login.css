@@ -1,31 +1,43 @@
 .login {
-    background-color: aliceblue;
-    height: 100%;
+  background-color: aliceblue;
+  height: 100%;
 }
+
 .login-main-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.close-login {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  cursor: pointer;
 }
 
 .login-section {
- display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+  width: 320px;
+  height: 230px;
 }
+
 .username-input,
 .password-input {
-    height: 30px;
+  height: 30px;
   width: 250px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 .login-button {
- background-color: orange;
-  color: white;
+  background-color: #00d4ff;
+  color: black;
   border: none;
   padding: 5px 107px;
   font-size: 16px;
@@ -33,7 +45,12 @@
   cursor: pointer;
   margin-top: 10px;
 }
+
+.login-button:hover {
+  background-color: #00c1e0;
+  color: white;
+}
+
 .login-button:focus {
   outline: none;
 }
-

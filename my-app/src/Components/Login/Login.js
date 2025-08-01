@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 // import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { AuthLogin, OpenLogin } from "../../Redux-tooltik/Reducers/AuthSlice";
+import TextField from "@mui/material/TextField";
 
 
 function Login({openLogin,setOpenLogin}) {
@@ -72,7 +73,7 @@ function Login({openLogin,setOpenLogin}) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { isOpenLogin, isAuthenticate } = useSelector(state => state.auth);
+  const { isAuthenticate } = useSelector(state => state.auth);
 
 
   function handleLogin(event) {
@@ -86,7 +87,11 @@ function Login({openLogin,setOpenLogin}) {
 
   function handleSubmit() {
     dispatch(AuthLogin({ userName: loginDetails.userName, passWord: loginDetails.passWord }));
-    setOpenLogin(prev => !prev)
+    if (!loginDetails.userName || !loginDetails.passWord) {
+      alert("Enter both UserName and PassWord!")
+    } else {
+      setOpenLogin(prev => !prev)
+    }
   }
 
   useEffect(() => {
@@ -95,6 +100,9 @@ function Login({openLogin,setOpenLogin}) {
     }
   }, [isAuthenticate, navigate]);
 
+const closeLogin = () => {
+  setOpenLogin(prev => !prev)
+}
 
 
   return (
@@ -102,9 +110,13 @@ function Login({openLogin,setOpenLogin}) {
       <div className="login">
         <div className="login-main-section">
           <div className="login-section">
-            <input type="text" placeholder="UserName or email" className="username-input" name="userName" onChange={handleLogin} />
-            <input type="password" placeholder="Password" className="password-input" name="passWord" onChange={handleLogin} />
+            <TextField id="outlined-basic" label="userName" variant="outlined" type="text" className="username-input" onChange={handleLogin} name="userName" placeholder="userName"/>
+
+            <TextField id="outlined-basic" label="passWord" variant="outlined"  type="password" placeholder="Password" className="password-input" name="passWord" onChange={handleLogin} />
             <button className="login-button" onClick={handleSubmit}>Login</button>
+          </div>
+          <div className="close-login" onClick={closeLogin}>
+            X
           </div>
         </div>
       </div>

@@ -95,7 +95,7 @@ function Home() {
       <div className="home-container">
         <div className="dashBoard-main">
           <div className="dashBoard">
-            <h2>welcome!,{userName}</h2>
+            <h2>welcome,{userName}!</h2>
             <p>you have Succesfully Logged in....</p>
           </div>
         </div>
