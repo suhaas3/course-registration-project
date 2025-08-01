@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AuthLogin, OpenLogin } from "../../Redux-tooltik/Reducers/AuthSlice";
 
 
-function Login() {
+function Login({openLogin,setOpenLogin}) {
 
   // const [userDetails, updateUserDetails] = useState({
   //   userName: '',
@@ -86,7 +86,7 @@ function Login() {
 
   function handleSubmit() {
     dispatch(AuthLogin({ userName: loginDetails.userName, passWord: loginDetails.passWord }));
-    dispatch(OpenLogin(false))
+    setOpenLogin(prev => !prev)
   }
 
   useEffect(() => {

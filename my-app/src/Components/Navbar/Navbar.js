@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector} from "react-redux";
 import CustomLoginForm from "../CustomLoginForm/CustomLoginForm";
-import { OpenLogin, OpenLogut } from "../../Redux-tooltik/Reducers/AuthSlice";
+import { OpenLogut } from "../../Redux-tooltik/Reducers/AuthSlice";
 import Dashboard from "../Dashboard/Dashboard";
 
 function Navbar() {
@@ -18,9 +18,9 @@ function Navbar() {
 
   const [clicked,setClicked] = useState(false);
 
-  // const [openLogin, setOpenLogin] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
 
-  const {isOpenLogin, isAuthenticate} = useSelector((state) => state.auth);
+  const {isAuthenticate} = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -31,12 +31,8 @@ function Navbar() {
     navigate(path)
   }
 
-  // function handleLogin() {
-  //   setOpenLogin(prev => !prev);
-  // }
-
   function handleLogin() {
-    dispatch(OpenLogin(true))
+    setOpenLogin(prev => !prev);
   }
 
   function handleLogout() {
@@ -61,13 +57,6 @@ function Navbar() {
 
         <img src="https://www.freeiconspng.com/thumbs/cart-icon/cart-icon-14.png" className="cart-logo" onClick={() => navigateFun('/cart')} />
 
-          {/* {isAuthenticate && 
-            <div className="dashboard-container">
-              <div type="none" className="dashboard-list">myDashBoard
-                <div className="tooltip" onClick={handleLogout}>Logout</div>
-              </div>
-              </div>} */}
-
           {isAuthenticate && <li type="none" className="dashboard-lists" onClick={dashBoardPage}>MyDashboard</li>}
 
           {clicked && <Dashboard/>}
@@ -76,9 +65,7 @@ function Navbar() {
 
       </div>
 
-      {/* {openLogin && <CustomLoginForm openLogin={openLogin} setOpenLogin={setOpenLogin} />} */}
-
-      {isOpenLogin && <CustomLoginForm/>}
+      {openLogin && <CustomLoginForm setOpenLogin={setOpenLogin} openLogin={openLogin} />}
     </>
   )
 }

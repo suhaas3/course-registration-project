@@ -6,18 +6,16 @@ import Login from '../Login/Login';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
- function CustomLoginForm({openLogin, setOpenLogin}) {
+ function CustomLoginForm({openLogin,setOpenLogin}) {
 
-  const {isOpenLogin} = useSelector((state) => state.auth)
-  // const [open, setOpen] = React.useState(openLogin);
-  const [open, setOpen] = React.useState(isOpenLogin);
+  const [open, setOpen] = React.useState(openLogin);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
 
-  // const handleClose = () => {
-  //   setOpenLogin(prev => !prev);
-  // };
+  const handleClose = () => {
+    setOpenLogin(prev => !prev);
+  };
 
   const navigate = useNavigate();
 
@@ -25,12 +23,11 @@ import { useNavigate } from 'react-router-dom';
     <React.Fragment>
       <Dialog
         fullScreen={fullScreen}
-        // open={openLogin}
-        open={isOpenLogin}
-        // onClose={handleClose}
+        open={openLogin}
+        onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <Login />
+        <Login openLogin={openLogin} setOpenLogin={setOpenLogin} />
       </Dialog>
     </React.Fragment>
   );
