@@ -16,7 +16,7 @@ function Navbar() {
     { path: '/clubs', name: 'Clubs' },
   ]
 
-  const [clicked,setClicked] = useState(false);
+  const [openDashBoard,setOpenDashBoard] = useState(false);
 
   const [openLogin, setOpenLogin] = useState(false);
 
@@ -40,7 +40,7 @@ function Navbar() {
   }
 
   function dashBoardPage() {
-    setClicked(prev => !prev)
+    setOpenDashBoard(prev => !prev)
   }
 
   return (
@@ -57,9 +57,9 @@ function Navbar() {
 
         <img src="https://www.freeiconspng.com/thumbs/cart-icon/cart-icon-14.png" className="cart-logo" onClick={() => navigateFun('/cart')} />
 
-          {isAuthenticate && <li type="none" className="dashboard-lists" onClick={dashBoardPage}>MyDashboard</li>}
+          {isAuthenticate && <li type="none" className="dashboard-lists" onClick={dashBoardPage}>Dashboard</li>}
 
-          {clicked && <Dashboard/>}
+          {openDashBoard && <Dashboard openDashBoard={openDashBoard} setOpenDashBoard={setOpenDashBoard} />}
 
         {isAuthenticate ? <button className="login-button-navbar" onClick={handleLogout}>Logout</button> : <button className="login-button-navbar" onClick={handleLogin}>Login</button> }
 

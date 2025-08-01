@@ -1,5 +1,6 @@
 .dash-lists-container {
-
+  width: 220px;
+  cursor: pointer;
 }
 
 .dash-lists {

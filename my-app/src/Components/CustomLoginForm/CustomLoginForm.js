@@ -3,7 +3,6 @@ import Dialog from '@mui/material/Dialog';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import Login from '../Login/Login';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
  function CustomLoginForm({openLogin,setOpenLogin}) {
