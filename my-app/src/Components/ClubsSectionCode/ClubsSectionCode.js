@@ -6,7 +6,7 @@ function ClubsSectionCode() {
 
   const [openSideBar, setOpenSideBar] = useState(false);
   const [openBranchClubs, setOpenBranchClubs] = useState(false);
-  const [cClub,setCclub] = useState('');
+  const [cClub, setCclub] = useState('');
 
   const clubsObj = [
     {
@@ -50,32 +50,34 @@ function ClubsSectionCode() {
   return (
     <>
 
-    <div className="sidebar-home">
-      <SideBar/>
+      <div className="sidebar-home">
+        <SideBar />
 
-    </div>
+      </div>
 
       <div className="container-fluid card-clubs-container">
         <div className="row row-card-container">
           {clubsObj?.map((copyOfClubsObj => {
             return (
-              <div className="col-3">
-                <div class="card" style={{ width: "18rem;" }}>
-                  <img src={copyOfClubsObj.image} class="card-img-top" alt="..." />
-                  <div class="card-body">
-                    <h5 class="card-title">{copyOfClubsObj.branch}</h5>
-                    <p class="card-text">{copyOfClubsObj.clubName}</p>
-                    <p class="card-para">&#8377;{copyOfClubsObj.registrationFee}</p>
-                    <button type="button" class="btn btn-secondary">start ur saturday</button>
+              <div className="col-3" key={copyOfClubsObj.id}>
+                <div className="card" style={{ width: "100%" }}>
+                  <img src={copyOfClubsObj.image} className="card-img-top" alt="..." />
+                  <div className="card-body">
+                    <h5 className="card-title">{copyOfClubsObj.branch}</h5>
+                    <p className="card-text">{copyOfClubsObj.clubName}</p>
+                    <p className="card-para">&#8377;{copyOfClubsObj.registrationFee}</p>
+                    <button type="button" className="btn btn-secondary">Start your Saturday</button>
                   </div>
                 </div>
               </div>
+
             )
           }))}
 
         </div>
 
       </div>
+
     </>
   )
 }
