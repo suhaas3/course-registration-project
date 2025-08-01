@@ -3,6 +3,7 @@ import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 import { createData } from "../../ContextApiData";
+import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 
 function Webinars({ }) {
 
@@ -92,6 +93,8 @@ function Webinars({ }) {
         setWebinarForm={setWebinarForm}
         setRefreshFlag={setRefreshFlag}
       />
+
+      <FooterSectionCode/>
 
     </>
   )

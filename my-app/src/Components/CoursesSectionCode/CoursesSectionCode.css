@@ -57,14 +57,18 @@
 }
 
 .courses-button {
-  background-color: orange;
-  border: none;
-  border-radius: 30px;
-  padding: 10px 20px;
-  font-size: 18px;
+  background-color: rgb(65, 167, 246);
   color: white;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: none;
+  padding: 5px 43px;
+  border-radius: 30px;
+  cursor: pointer;
 }
-
+.courses-button:focus {
+  outline: none;
+}
 /* Responsive */
 @media (max-width: 1024px) {
   .row-course-container {
