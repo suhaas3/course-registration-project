@@ -6,6 +6,7 @@ import Webinars from "../Webinars/Webinars";
 function WebinarSubmitForm({ setRefreshFlag, setWebinarForm, openWebinarForm }) {
 
   const [formInputDetails, setFormInputDetails] = useState({
+    Id: Math.floor(Math.random() * 10),
     Title: "",
     Date: "",
     Description: ""

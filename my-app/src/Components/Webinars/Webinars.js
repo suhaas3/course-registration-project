@@ -18,7 +18,29 @@ function Webinars({ }) {
   useEffect(() => {
     const storedWebinarData = JSON.parse(localStorage.getItem('webinarsData')) || [];
     setSavedWebinarData(storedWebinarData);
-  }, [refreshFlag]); 
+  }, [refreshFlag]);
+
+  
+
+  function removeWebinarTodo(removeId) {
+  console.log(removeId, 'remove data');
+
+  // Get existing data from localStorage
+  const storedData = localStorage.getItem('webinarsData');
+  const parsedData = JSON.parse(storedData) || [];
+
+  // Filter out the item to remove
+  const updatedData = parsedData.filter(item => item.Id !== removeId);
+
+  // Save the updated list back to localStorage
+  localStorage.setItem('webinarsData', JSON.stringify(updatedData));
+
+  // (Optional) If you stored individual webinar data by ID, remove it
+  localStorage.removeItem(removeId);
+
+  // Update the state to re-render the UI
+  setSavedWebinarData(updatedData);
+}
   return (
 
     <>
@@ -42,13 +64,16 @@ function Webinars({ }) {
           <div className="container-fluid">
             <div className="row">
               {savedWebinarData?.map((webinar, index) => (
-                <div className="col-4">
+                <div className="col-4 webinar-card-top" data-id={webinar.Id}>
                   <div className="card webinar-card-box" style={{ width: "18rem" }}>
                     <div className="card-body">
                       <h5 className="card-title">{webinar.Title}</h5>
                       <h5 className="card-date">{webinar.Date}</h5>
                       <p className="card-text">{webinar.Description}</p>
                       <button className="webinar-start-buttom">Start now</button>
+                      <div className="close-symbol" onClick={() => removeWebinarTodo(webinar.Id)}>
+                        X
+                      </div>
                     </div>
                   </div>
                 </div>

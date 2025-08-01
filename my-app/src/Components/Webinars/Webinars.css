@@ -1,3 +1,15 @@
+.webinar-card-container {
+  margin-top: 150px;
+}
+.webinar-card-top {
+  position: relative;
+}
+.close-symbol {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  cursor: pointer;
+}
 .webinar-container {
   padding-top: 250px;
   padding-left: 250px;
@@ -53,10 +65,6 @@
 
 .search-webinar-button:focus {
   outline: none;
-}
-
-.webinar-card-container {
-  margin-top: 150px;
 }
 
 .webinar-card-box {
