@@ -9,7 +9,7 @@ import {
   Typography
 } from '@mui/material';
 import {useDispatch} from 'react-redux';
-import { UserCourseFormDetails } from '../../Redux-tooltik/CoursePurchaseFormSlice';
+import { UserCourseFormDetails } from '../../Redux-tooltik/Reducers/CoursePurchaseFormSlice';
 
 const CoursePurchaseForm = ({ open, openCoursePurchase, setOpenCoursePurchase }) => {
   const [formData, setFormData] = useState({

@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import LoginFormSclice from './Redux-tooltik/Reducers/LoginFormSclice';
 import  SignUpFormSlice  from './Redux-tooltik/Reducers/SignUpFormSlice';
 import AuthSlice from './Redux-tooltik/Reducers/AuthSlice';
-import CoursePurchaseFormSlice from './Redux-tooltik/CoursePurchaseFormSlice';
+import { CoursePurchaseFormSlice } from './Redux-tooltik/Reducers/CoursePurchaseFormSlice';
 
 
 export const store = configureStore({

@@ -6,6 +6,8 @@ import { useDispatch, useSelector} from "react-redux";
 import CustomLoginForm from "../CustomLoginForm/CustomLoginForm";
 import { OpenLogut } from "../../Redux-tooltik/Reducers/AuthSlice";
 import Dashboard from "../Dashboard/Dashboard";
+import SignUpDialog from "../CustomSignUpForm/CustomSignUpForm";
+import CustomSignUpForm from "../CustomSignUpForm/CustomSignUpForm";
 
 function Navbar() {
 
@@ -17,8 +19,8 @@ function Navbar() {
   ]
 
   const [openDashBoard,setOpenDashBoard] = useState(false);
-
   const [openLogin, setOpenLogin] = useState(false);
+  const [openSignUp,setOpenSignUp]=useState(false);
 
   const {isAuthenticate} = useSelector((state) => state.auth);
 
@@ -43,6 +45,11 @@ function Navbar() {
     setOpenDashBoard(prev => !prev)
   }
 
+  const signUpHandle = () => {
+    setOpenSignUp(prev => !prev)
+  }
+
+ 
   return (
     <>
       <div className="navbar-section">
@@ -57,6 +64,8 @@ function Navbar() {
 
         <img src="https://www.freeiconspng.com/thumbs/cart-icon/cart-icon-14.png" className="cart-logo" onClick={() => navigateFun('/cart')} />
 
+        <li type="none" className="sign-up-list" onClick={signUpHandle}>SignUp</li>
+
           {isAuthenticate && <li type="none" className="dashboard-lists" onClick={dashBoardPage}>Dashboard</li>}
 
           {openDashBoard && <Dashboard openDashBoard={openDashBoard} setOpenDashBoard={setOpenDashBoard} />}
@@ -66,6 +75,8 @@ function Navbar() {
       </div>
 
       {openLogin && <CustomLoginForm setOpenLogin={setOpenLogin} openLogin={openLogin} />}
+
+{openSignUp && <CustomSignUpForm openSignUp={openSignUp} setOpenSignUp={setOpenSignUp} />}
     </>
   )
 }
