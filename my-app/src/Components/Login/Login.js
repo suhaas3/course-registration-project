@@ -93,6 +93,7 @@ function Login({openLogin,setOpenLogin}) {
     } else {
       setOpenLogin(prev => !prev)
     }
+    navigate('/home')
   }
 
   useEffect(() => {

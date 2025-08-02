@@ -10,7 +10,7 @@ import Dashboard from "../Dashboard/Dashboard";
 function Navbar() {
 
   const links = [
-    { path: '/', name: 'Home' },
+    { path: '/home', name: 'Home' },
     { path: '/courses', name: 'Courses' },
     { path: '/webinars', name: 'Webinars' },
     { path: '/clubs', name: 'Clubs' },

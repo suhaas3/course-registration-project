@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import './Courses.css';
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 import SideBar from "../SideBar/SideBar";
+import { useLocation } from "react-router-dom";
 function Courses() {
 
   const coursesObject = [{
@@ -25,6 +26,7 @@ function Courses() {
     originalPrice: 20000
   },
 ]
+
 
   return (
     <>

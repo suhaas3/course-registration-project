@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './ClubsSectionCode.css';
 import SideBar from "../SideBar/SideBar";
+import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 
 function ClubsSectionCode() {
 
@@ -77,6 +78,8 @@ function ClubsSectionCode() {
         </div>
 
       </div>
+
+      <FooterSectionCode/>
 
     </>
   )

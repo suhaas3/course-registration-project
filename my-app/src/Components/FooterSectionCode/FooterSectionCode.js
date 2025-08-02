@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import './FooterSectionCode.css';
 
 function FooterSectionCode() {
@@ -24,15 +25,25 @@ function FooterSectionCode() {
     link: "Refund policy"
   }]
 
+  const navigate = useNavigate();
+
+     const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth' // or 'auto' for instant scroll
+      });
+    };
+
   return (
     <>
       <footer className="foot-container">
         <div className="footer-1">
-          <button className="footer-button">launched by</button>
+          <button className="footer-button" onClick={scrollToTop}>launched by</button>
           <div className="foot-img-container">
             {footerObj.map((foot) => {
               return (
-                <img className="footer-images" src={foot.image} />
+                <img className="footer-images" src={foot.image} onClick={scrollToTop} />
               )
             })}
           </div>
@@ -40,7 +51,7 @@ function FooterSectionCode() {
           <ul className="links-container">
             {footLinks.map(flink => {
               return (
-                <li>{flink.link}</li>
+                <li onClick={scrollToTop}>{flink.link}</li>
               )
             })}
           </ul>

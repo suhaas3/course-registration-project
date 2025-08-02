@@ -3,7 +3,9 @@ import './Dashboard.css';
 import Dialog from "@mui/material/Dialog";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { OpenLogut } from "../../Redux-tooltik/Reducers/AuthSlice";
+import ProfileDetails from "../ProfileDetails/ProfileDetails";
 
 
 function Dashboard({ openDashBoard, setOpenDashBoard }) {
@@ -12,10 +14,10 @@ function Dashboard({ openDashBoard, setOpenDashBoard }) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
- const [profileDetails,setProfileDetails] = useState([]);
+  const [openProfileDetails, setOpenProfileDetails] = useState(false);
 
- const {LoginUserDetails} = useSelector((state) => state.auth);
-console.log(LoginUserDetails.userName,'user name redux')
+  const { LoginUserDetails } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const handleClose = () => {
     setOpenDashBoard(prev => !prev);
@@ -27,7 +29,14 @@ console.log(LoginUserDetails.userName,'user name redux')
     { id: 2, name: "Logout" }
   ]
 
-  const dashBoardOptions = (dashBoardId) => {
+  function dashBoardOptions(dashboardId) {
+    if (dashboardId === 2) {
+      dispatch(OpenLogut())
+    }
+    if (dashboardId === 1) {
+      setOpenProfileDetails(prev => !prev)
+    }
+    setOpenDashBoard(prev => !prev)
   }
 
   return (
@@ -62,6 +71,8 @@ console.log(LoginUserDetails.userName,'user name redux')
           </div>
         </Dialog>
       </React.Fragment >
+
+      {openProfileDetails && <ProfileDetails openProfileDetails={openProfileDetails} setOpenProfileDetails={setOpenProfileDetails} />}
     </>
   )
 }

@@ -81,10 +81,13 @@ function Home() {
     setPage(prev => (prev === 0 ? 1 : 0));
   };
 
-  function handleCourses() {
+  // function handleCourses() {
+  //   navigate('/courses')
+  // }
+
+  const handleCourses = () => {
     navigate('/courses')
   }
-
 
   return (
     <>
