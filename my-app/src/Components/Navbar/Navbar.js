@@ -11,16 +11,16 @@ import CustomSignUpForm from "../CustomSignUpForm/CustomSignUpForm";
 
 function Navbar() {
 
+    const [openDashBoard,setOpenDashBoard] = useState(false);
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignUp,setOpenSignUp]=useState(false);
+
   const links = [
     { path: '/home', name: 'Home' },
     { path: '/courses', name: 'Courses' },
     { path: '/webinars', name: 'Webinars' },
     { path: '/clubs', name: 'Clubs' },
   ]
-
-  const [openDashBoard,setOpenDashBoard] = useState(false);
-  const [openLogin, setOpenLogin] = useState(false);
-  const [openSignUp,setOpenSignUp]=useState(false);
 
   const {isAuthenticate} = useSelector((state) => state.auth);
 
@@ -60,7 +60,7 @@ function Navbar() {
           ))}
         </ul>
 
-        <input className="search" type="text" placeholder="Type ur need" onClick={() => navigateFun('/search')} />
+        <input className="search" type="text" placeholder="Type ur need" />
 
         <img src="https://www.freeiconspng.com/thumbs/cart-icon/cart-icon-14.png" className="cart-logo" onClick={() => navigateFun('/cart')} />
 

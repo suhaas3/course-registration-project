@@ -1,9 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useMemo, useState } from "react";
 import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
 import { createData } from "../../ContextApiData";
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
+import { debounce } from "lodash";
 
 function Webinars({ }) {
 
@@ -11,6 +12,14 @@ function Webinars({ }) {
   const [savedWebinarData, setSavedWebinarData] = useState([]);
   const [refreshFlag, setRefreshFlag] = useState(false);
   const [editWebinarId, setEditWebinarId] = useState(null);
+  const [searchQuery,setSearchQuery] = useState('');
+
+  const [resultsData,setResultsData] = useState([]);
+
+
+  useEffect(() => {
+    setResultsData(savedWebinarData);
+  },[savedWebinarData])
 
 
   function handleWebinarForm() {
@@ -49,6 +58,34 @@ function Webinars({ }) {
     setWebinarForm(prev => !prev);               // Open the form
   }
 
+const handleSearch = (e) => {
+  const { value } = e.target;
+  setSearchQuery(value);
+  debounceSearchItems(value, savedWebinarData); // pass both args here
+};
+
+
+const debounceSearchItems = useMemo(() =>
+  debounce((searchTerm, data) => {
+    const filtered = data.filter((searchItem) =>
+      searchItem.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      searchItem.Date.includes(searchTerm) ||
+      searchItem.Description.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setResultsData(filtered);
+  }, 400),
+  []
+);
+
+useEffect(() => {
+  return () => {
+    debounceSearchItems.cancel(); // Now this works fine
+  };
+}, [debounceSearchItems]);
+
+
+
+
   return (
 
     <>
@@ -63,7 +100,7 @@ function Webinars({ }) {
         </div>
 
         <div className="search-section-container">
-          <input className="webinar-search-input" placeholder="Seach webinar..." />
+          <input className="webinar-search-input" placeholder="Seach webinar..." onChange={handleSearch} />
 
           <button className="search-webinar-button">&#128269; Search</button>
         </div>
@@ -71,7 +108,7 @@ function Webinars({ }) {
         <div className="webinar-card-container">
           <div className="container-fluid">
             <div className="row">
-              {savedWebinarData?.map((webinar, index) => (
+              {resultsData?.map((webinar, index) => (
                 <div className="col-4 webinar-card-top" data-id={webinar.Id}>
                   <div className="card webinar-card-box" style={{ width: "18rem" }}>
                     <div className="card-body">
