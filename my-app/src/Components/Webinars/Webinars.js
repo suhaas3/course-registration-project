@@ -12,14 +12,15 @@ function Webinars({ }) {
   const [savedWebinarData, setSavedWebinarData] = useState([]);
   const [refreshFlag, setRefreshFlag] = useState(false);
   const [editWebinarId, setEditWebinarId] = useState(null);
-  const [searchQuery,setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const [resultsData,setResultsData] = useState([]);
+  const [resultsData, setResultsData] = useState([]);
+  const [sortOption, setSortOption] = useState('');
 
 
   useEffect(() => {
     setResultsData(savedWebinarData);
-  },[savedWebinarData])
+  }, [savedWebinarData])
 
 
   function handleWebinarForm() {
@@ -58,32 +59,54 @@ function Webinars({ }) {
     setWebinarForm(prev => !prev);               // Open the form
   }
 
-const handleSearch = (e) => {
-  const { value } = e.target;
-  setSearchQuery(value);
-  debounceSearchItems(value, savedWebinarData); // pass both args here
-};
-
-
-const debounceSearchItems = useMemo(() =>
-  debounce((searchTerm, data) => {
-    const filtered = data.filter((searchItem) =>
-      searchItem.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      searchItem.Date.includes(searchTerm) ||
-      searchItem.Description.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setResultsData(filtered);
-  }, 400),
-  []
-);
-
-useEffect(() => {
-  return () => {
-    debounceSearchItems.cancel(); // Now this works fine
+  const handleSearch = (e) => {
+    const { value } = e.target;
+    setSearchQuery(value);
+    setSortOption('');
+    debounceSearchItems(value, savedWebinarData); // pass both args here
   };
-}, [debounceSearchItems]);
 
 
+  const debounceSearchItems = useMemo(() =>
+    debounce((searchTerm, data) => {
+      const filtered = data.filter((searchItem) =>
+        searchItem.Title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        searchItem.Date.includes(searchTerm) ||
+        searchItem.Description.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setResultsData(filtered);
+    }, 400),
+    []
+  );
+
+  useEffect(() => {
+    return () => {
+      debounceSearchItems.cancel(); // Now this works fine
+    };
+  }, [debounceSearchItems]);
+
+
+  const handleSort = (e) => {
+    const selectedValue = e.target.value;
+    setSortOption(selectedValue);
+
+
+    if (!selectedValue) {
+      setResultsData(savedWebinarData);
+      return;
+    }
+
+    let sorted = [...savedWebinarData];
+
+    if (selectedValue === 'asc') {
+      sorted.sort((a, b) => a.Title.localeCompare(b.Title));
+    } else if (selectedValue === "desc") {
+      sorted.sort((a, b) => b.Title.localeCompare(a.Title));
+    }
+
+
+    setResultsData(sorted)
+  }
 
 
   return (
@@ -94,15 +117,23 @@ useEffect(() => {
       <div className="webinar-container">
         <div className="add-webinar-section">
           <h3 className="upload-header">Upload webinar</h3>
-
           <button className="add-webinar-button" onClick={handleWebinarForm}>+ Add webinar</button>
-
         </div>
 
         <div className="search-section-container">
           <input className="webinar-search-input" placeholder="Seach webinar..." onChange={handleSearch} />
 
           <button className="search-webinar-button">&#128269; Search</button>
+        </div>
+
+        <div className="sort-section">
+          <span>SortBy :</span>
+          <select value={sortOption} onChange={handleSort}>
+            <option value="">-- Select Sort Option --</option>
+            <option value="asc">A--Z</option>
+            <option value="desc">Z--A</option>
+          </select>
+
         </div>
 
         <div className="webinar-card-container">
