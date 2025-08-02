@@ -58,6 +58,11 @@ body {
   font-size: 16px;
   cursor: pointer;
 }
+.top-left-courses-button:focus,
+.cards-button:focus,
+.reslut-course-button:focus {
+  outline: none;
+}
 
 /* RIGHT IMAGE */
 .top-right-img {
