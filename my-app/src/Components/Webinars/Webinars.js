@@ -2,7 +2,6 @@ import React, { useCallback, useContext, useEffect, useMemo, useState } from "re
 import SideBar from "../SideBar/SideBar";
 import './Webinars.css';
 import CustomeWebinarForm from "../CustomeWebinarForm/CustomeWebinarForm";
-import { createData } from "../../ContextApiData";
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 import { debounce } from "lodash";
 
