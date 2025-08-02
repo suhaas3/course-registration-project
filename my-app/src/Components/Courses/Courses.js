@@ -1,11 +1,13 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './Courses.css';
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
 import SideBar from "../SideBar/SideBar";
 import { useLocation } from "react-router-dom";
+import CoursePurchaseForm from "../CoursePurchaseForm/CoursePurchaseForm";
 function Courses() {
 
   const coursesObject = [{
+    id: 1,
     image: "https://media.licdn.com/dms/image/v2/D4D12AQGRsL7h26w-Bg/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1711431970518?e=2147483647&v=beta&t=7MUoFdBoTt2bbPGQLIg36dcFCRHCwu1HyicK282aK6Y",
     title: "Full Stack Development",
     description: "Build real projects,enhance your skills, and land your dream job as Full stack developer",
@@ -13,25 +15,32 @@ function Courses() {
     originalPrice: 25000
   },
   {
+    id: 2,
     image: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/20201111215809/How-to-Become-a-Front-End-Developer-in-2020.png",
     title: "FrontEnd Development",
     description: "Experience the real-world of frontend development!",
     MarketPrice: 50000,
     originalPrice: 15000
   }, {
+    id: 3,
     image: "https://media.geeksforgeeks.org/wp-content/uploads/20240701150157/Backend-Development.webp",
     title: "Back-End Development",
     description: "Prepare for a Back-End career with a real-world office simulation experience! Added a preview for our class on how i will be teaching check below",
     MarketPrice: 100000,
     originalPrice: 20000
   },
-]
+  ]
+
+  const [openCoursePurchase,setOpenCoursePurchase]=useState(false);
+  const coursePurchase = (reciveId) => {
+    setOpenCoursePurchase(prev => !prev)
+  }
 
 
   return (
     <>
       <div className="sidebar-home">
-        <SideBar/>
+        <SideBar />
 
       </div>
 
@@ -52,7 +61,7 @@ function Courses() {
                         <p className="course-discount">₹{course.MarketPrice}</p>
                         <p className="course-cost">₹{course.originalPrice}</p>
                       </div>
-                      <button className="buy-button">Buy Now</button>
+                      <button className="buy-button" onClick={() => coursePurchase(course.id)}>Buy Now</button>
                       <p className="discount-paragraph"><img src="https://static.vecteezy.com/system/resources/thumbnails/008/963/155/small/sales-discount-price-logo-free-vector.jpg" className="discount-img" />Flexible pricing plans
                       </p>
                     </div>
@@ -67,6 +76,8 @@ function Courses() {
           <FooterSectionCode />
         </div>
       </div>
+
+      {openCoursePurchase && <CoursePurchaseForm  openCoursePurchase={openCoursePurchase} setOpenCoursePurchase={setOpenCoursePurchase} />}
     </>
   )
 }
