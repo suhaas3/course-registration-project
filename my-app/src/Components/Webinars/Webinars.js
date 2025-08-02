@@ -99,9 +99,9 @@ function Webinars({ }) {
     let sorted = [...savedWebinarData];
 
     if (selectedValue === 'asc') {
-      sorted.sort((a, b) => a.Title.localeCompare(b.Title));
+      sorted.sort((a, b) => a.Title.localeCompare(b.Title) || a.Description.localeCompare(b.Description));
     } else if (selectedValue === "desc") {
-      sorted.sort((a, b) => b.Title.localeCompare(a.Title));
+      sorted.sort((a, b) => b.Title.localeCompare(a.Title) || a.Description.localeCompare(b.Description));
     }
 
 
