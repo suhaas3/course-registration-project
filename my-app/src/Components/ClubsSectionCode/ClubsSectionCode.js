@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import './ClubsSectionCode.css';
 import SideBar from "../SideBar/SideBar";
 import FooterSectionCode from "../FooterSectionCode/FooterSectionCode";
+import CustomClubRegistrationForm from "../CustomClubRegistrationForm/CustomClubRegistrationForm";
 
 function ClubsSectionCode() {
 
   const [openSideBar, setOpenSideBar] = useState(false);
   const [openBranchClubs, setOpenBranchClubs] = useState(false);
-  const [cClub, setCclub] = useState('');
+  const [openRegForm,setOpenRegForm]=useState(false);
 
   const clubsObj = [
     {
@@ -47,6 +48,9 @@ function ClubsSectionCode() {
     },
   ]
 
+const handleClubs = () => {
+  setOpenRegForm(prev => !prev);
+}
 
   return (
     <>
@@ -67,7 +71,7 @@ function ClubsSectionCode() {
                     <h5 className="card-title">{copyOfClubsObj.branch}</h5>
                     <p className="card-text">{copyOfClubsObj.clubName}</p>
                     <p className="card-para">&#8377;{copyOfClubsObj.registrationFee}</p>
-                    <button type="button" className="btn btn-secondary">Start your Saturday</button>
+                    <button type="button" className="btn btn-secondary" onClick={handleClubs}>Start your Saturday</button>
                   </div>
                 </div>
               </div>
@@ -78,6 +82,8 @@ function ClubsSectionCode() {
         </div>
 
       </div>
+
+      {openRegForm && <CustomClubRegistrationForm openRegForm={openRegForm} setOpenRegForm={setOpenRegForm} />}
 
       <FooterSectionCode/>
 
