@@ -8,13 +8,15 @@ import {
   Button,
   Typography
 } from '@mui/material';
+import {useDispatch} from 'react-redux';
+import { UserCourseFormDetails } from '../../Redux-tooltik/CoursePurchaseFormSlice';
 
 const CoursePurchaseForm = ({ open, openCoursePurchase, setOpenCoursePurchase }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    course: '',
+    userName: '',
+    emailId: '',
+    phoneNumber: '',
+    courseBuy: '',
   });
 
   const handleChange = (e) => {
@@ -22,9 +24,11 @@ const CoursePurchaseForm = ({ open, openCoursePurchase, setOpenCoursePurchase })
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const dispatch = useDispatch();
+
   const handleSubmit = () => {
     // You can send data to backend here
-    console.log('User Details:', formData);
+    dispatch(UserCourseFormDetails({id: Date.now(),userName: formData.userName,emailId: formData.emailId,phoneNumber: formData.phoneNumber,courseBuy: formData.courseBuy}))
     setOpenCoursePurchase(prev => !prev)// handleClose(); // Close dialog after submit
   };
 
@@ -38,35 +42,35 @@ const CoursePurchaseForm = ({ open, openCoursePurchase, setOpenCoursePurchase })
         <TextField
           margin="dense"
           label="Full Name"
-          name="name"
+          name="userName"
           fullWidth
-          value={formData.name}
+          value={formData.userName}
           onChange={handleChange}
         />
         <TextField
           margin="dense"
           label="Email"
-          name="email"
+          name="emailId"
           type="email"
           fullWidth
-          value={formData.email}
+          value={formData.emailId}
           onChange={handleChange}
         />
         <TextField
           margin="dense"
           label="Phone Number"
-          name="phone"
+          name="phoneNumber"
           type="tel"
           fullWidth
-          value={formData.phone}
+          value={formData.phoneNumber}
           onChange={handleChange}
         />
         <TextField
           margin="dense"
           label="Course Name"
-          name="course"
+          name="courseBuy"
           fullWidth
-          value={formData.course}
+          value={formData.courseBuy}
           onChange={handleChange}
         />
       </DialogContent>
