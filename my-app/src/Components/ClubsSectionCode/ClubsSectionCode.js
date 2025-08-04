@@ -14,37 +14,32 @@ function ClubsSectionCode() {
     {
       id: 1,
       branch: "CSE-DS",
-      image: "https://t3.ftcdn.net/jpg/02/43/50/16/360_F_243501662_SMJR9CiVIddWPj31eBfw0hI88xaICA1V.jpg",
+      image: "https://takshashilauniv.ac.in/wp-content/uploads/2024/10/cultural-club-activities-in-colleges.jpg",
       clubName: "Hydra",
-      registrationFee: 200,
     },
     {
       id: 2,
       branch: "CSE-DS",
-      image: "https://t3.ftcdn.net/jpg/02/43/50/16/360_F_243501662_SMJR9CiVIddWPj31eBfw0hI88xaICA1V.jpg",
+      image: "https://www.shutterstock.com/image-photo/diverse-school-children-students-build-260nw-2036186204.jpg",
       clubName: "Sheild",
-      registrationFee: 200,
     },
     {
       id: 3,
       branch: "CSE-DS",
-      image: "https://t3.ftcdn.net/jpg/02/43/50/16/360_F_243501662_SMJR9CiVIddWPj31eBfw0hI88xaICA1V.jpg",
+      image: "https://assets.skyfilabs.com/images/blog/8-must-to-do-activities-in-b-tech-1st-year.webp",
       clubName: "Arts",
-      registrationFee: 200,
     },
     {
       id: 4,
       branch: "CSE-DS",
-      image: "https://t3.ftcdn.net/jpg/02/43/50/16/360_F_243501662_SMJR9CiVIddWPj31eBfw0hI88xaICA1V.jpg",
+      image: "https://s39613.pcdn.co/wp-content/uploads/2019/04/physics-club-benefits-of-departmental-clubs-190422.jpg",
       clubName: "Hydra",
-      registrationFee: 200,
     },
     {
       id: 5,
       branch: "CSE-DS",
-      image: "https://t3.ftcdn.net/jpg/02/43/50/16/360_F_243501662_SMJR9CiVIddWPj31eBfw0hI88xaICA1V.jpg",
+      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYEqFKgdoBgjotd4BWfk9hc2hQ9rQrdNYk2GpfPnk0MSR9mPbsClGElve4V5gXPQ2wRY&usqp=CAU",
       clubName: "Sheild",
-      registrationFee: 200,
     },
   ]
 
@@ -70,7 +65,6 @@ const handleClubs = () => {
                   <div className="card-body">
                     <h5 className="card-title">{copyOfClubsObj.branch}</h5>
                     <p className="card-text">{copyOfClubsObj.clubName}</p>
-                    <p className="card-para">&#8377;{copyOfClubsObj.registrationFee}</p>
                     <button type="button" className="btn btn-secondary" onClick={handleClubs}>Start your Saturday</button>
                   </div>
                 </div>

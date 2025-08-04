@@ -86,26 +86,32 @@ function Webinars({ }) {
 
 
   const handleSort = (e) => {
-    const selectedValue = e.target.value;
-    setSortOption(selectedValue);
+  const selectedValue = e.target.value;
+  setSortOption(selectedValue);
 
-
-    if (!selectedValue) {
-      setResultsData(savedWebinarData);
-      return;
-    }
-
-    let sorted = [...savedWebinarData];
-
-    if (selectedValue === 'asc') {
-      sorted.sort((a, b) => a.Title.localeCompare(b.Title) || a.Description.localeCompare(b.Description));
-    } else if (selectedValue === "desc") {
-      sorted.sort((a, b) => b.Title.localeCompare(a.Title) || a.Description.localeCompare(b.Description));
-    }
-
-
-    setResultsData(sorted)
+  if (!selectedValue) {
+    setResultsData(savedWebinarData);
+    return;
   }
+
+  let sorted = [...savedWebinarData];
+
+  if (selectedValue === 'asc') {
+    sorted.sort((a, b) =>
+      a.Title.localeCompare(b.Title) || a.Description.localeCompare(b.Description)
+    );
+  } else if (selectedValue === 'desc') {
+    sorted.sort((a, b) =>
+      b.Title.localeCompare(a.Title) || b.Description.localeCompare(a.Description)
+    );
+  } else if (selectedValue === 'newest') {
+    sorted.sort((a, b) => new Date(b.Date) - new Date(a.Date)); // Newest first
+  } else if (selectedValue === 'oldest') {
+    sorted.sort((a, b) => new Date(a.Date) - new Date(b.Date)); // Oldest first
+  }
+
+  setResultsData(sorted);
+};
 
 
   return (
@@ -131,6 +137,8 @@ function Webinars({ }) {
             <option value="">-- Select Sort Option --</option>
             <option value="asc">A--Z</option>
             <option value="desc">Z--A</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
           </select>
 
         </div>
